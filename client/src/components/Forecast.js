@@ -4,11 +4,15 @@ import Results from "./Results";
 import WeatherBox from "./WeatherBox";
 import API from "../utils/API";
 
+
 class Forecast extends Component {
-  state = {
-    results: [],
-    weather: ""
-  };
+  constructor(props) {
+    super(props)
+      this.state = {
+        results: []
+       
+  }
+}; 
 
 
   componentDidMount() {
@@ -45,16 +49,16 @@ class Forecast extends Component {
 
         {this.state.results.length ? (
           <WeatherBox>
-            {this.state.results.map(result => (
+            {this.state.results.map((result, i) => (
               <Results
-                key={result.dt_txt}
+                key={i}
                 dateTime={result.dt_txt}
                 temp={result.main.temp}
                 weather={result.weather.map(weather => (
-                  this.setState.weather = weather.description     
+                  weather.description     
                 )
               )}
-                img={this.state.weather === "clear sky" ? "url('../sky-sunny-clouds-cloudy.jpg')" : "url('../clouds-cloudporn-weather-lookup-158163.jpeg')"}
+                
               />
             ))}
           </WeatherBox>
