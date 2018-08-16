@@ -6,6 +6,8 @@ import scattered from "../sky-sunny-clouds-cloudy.jpg"
 import few from "../pexels-photo-96622.jpeg"
 import day from "../blue-clouds-day-fluffy-53594.jpeg"
 import light from "../pexels-photo-994078.jpeg"
+import overcast from "../gray-overcast-sky.jpg"
+import Moment from 'react-moment';
 
 const Results = props => (
 
@@ -16,18 +18,20 @@ const Results = props => (
                 (props.weather == "light rain") ? light:
                 (props.weather == "few clouds") ? few: 
                 (props.weather == "broken clouds") ? few: 
-                (props.weather == "overcast clouds") ? clouds: 
+                (props.weather == "overcast clouds") ? overcast: 
+                (props.weather == "moderate rain") ? clouds: 
                 day}
                 alt="weather image"/>
             <div className="card-body">
             
-                Date and Time: {props.dateTime}
+                Date and Time: <Moment>{props.dateTime}</Moment>
+                
                 <br/>
                 Temp: {props.temp}
                 <br/>
                 Weather: {props.weather}
                 <br/>
-                Key: {props.key}
+                Key: {props.id}
             
             </div>  
     </div>

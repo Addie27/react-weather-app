@@ -4,8 +4,12 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.21",
     "react": "^16.4.2",
+    "react-css-grid": "^2.0.0-0",
     "react-dom": "^16.4.2",
+    "react-moment": "^0.7.9",
     "react-scripts": "1.1.4"
   },
   "scripts": {

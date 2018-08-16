@@ -1,11 +1,14 @@
+.container {
+    margin-left: 0;
+    margin-right: -50px !important;  
+}
 .picture {
-    width: 150px;
-    height: 150px; 
+    width: 130px;
+    height: 130px; 
 }
 
-.card {
-    width: 150px;
-    height: 300px; 
-    font-size: 12px; 
-    margin: 10px; 
+.card-body {
+    font-size: 10px !important;
+    padding: 5px !important; 
 }
+

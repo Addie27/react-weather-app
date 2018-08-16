@@ -3,9 +3,13 @@ import React, { Component } from "react";
 import Results from "./Results";
 import WeatherBox from "./WeatherBox";
 import API from "../utils/API";
+import Grid from 'react-css-grid'
+import  "./Components.css";
 
 
+const results = [];
 class Forecast extends Component {
+
   constructor(props) {
     super(props)
       this.state = {
@@ -19,15 +23,24 @@ class Forecast extends Component {
     this.getWeather();
   }
 
+  filterResults = () => {
+    results.splice(0, 1, 8, 9, 16, 17, 24, 25, 32, 33)
+  
+  }
+
   getWeather = () => {
     API.search()
-      .then(res => 
-     
-        // console.log(res.data.list)
-        this.setState({ results: res.data.list }))
-      
-      .catch(err => console.log(err))
-      };
+    
+      .then(
+        res => 
+        this.setState({ results: res.data.list })
+        
+      )
+      this.filterResults();
+            
+  };
+
+  
 
   // handleInputChange = event => {
   //   const name = event.target.name;
@@ -45,27 +58,41 @@ class Forecast extends Component {
 
   render() {
     return (
+      
       <div className="container">
-
-        {this.state.results.length ? (
+        <h1>Philadelphia Weather Forecast</h1>
+     
+           {this.state.results.length ? (
           <WeatherBox>
+            <Grid
+             width={120}
+             gap={10}>
+
             {this.state.results.map((result, i) => (
+           
               <Results
+                
                 key={i}
+                id={i}
                 dateTime={result.dt_txt}
                 temp={result.main.temp}
                 weather={result.weather.map(weather => (
                   weather.description     
                 )
-              )}
+               
+              )} 
                 
               />
+              
             ))}
+          
+            </Grid>
           </WeatherBox>
         ) : (
             <h2 className="text-center">No Weather to Report</h2>
           )}
-      </div>
+        
+    </div>      
     );
   }
 }
